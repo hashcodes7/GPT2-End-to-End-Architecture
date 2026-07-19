@@ -2,11 +2,30 @@ import torch
 
 from g_text_generator import generate_text
 from k_loss_calculator import calc_loss_batch, calc_loss_loader
+from z_helpers import model_mode
 
 
 def train_model_simple(model,train_loader,val_loader,optimizer,device,num_epochs,
 eval_freq,eval_iter,start_context,tokenizer,
 ):
+    """
+    Simple training loop for GPT model.
+    
+    Args:
+        model: GPT model to train
+        train_loader: Training data loader
+        val_loader: Validation data loader
+        optimizer: Optimizer instance
+        device: torch device
+        num_epochs: Number of training epochs
+        eval_freq: Evaluation frequency (in steps)
+        eval_iter: Number of iterations for evaluation
+        start_context: Starting prompt for generation
+        tokenizer: Tokenizer instance
+        
+    Returns:
+        Tuple of (train_losses, val_losses, track_tokens_seen)
+    """
     train_losses = []
     val_losses = []
     track_tokens_seen = []
@@ -72,24 +91,32 @@ def evaluate_model(
     device,
     eval_iter,
 ):
-    was_training = model.training
-    model.eval()
+    """
+    Evaluate model on training and validation sets.
+    
+    Args:
+        model: GPT model
+        train_loader: Training data loader
+        val_loader: Validation data loader
+        device: torch device
+        eval_iter: Number of iterations for evaluation
+        
+    Returns:
+        Tuple of (train_loss, val_loss)
+    """
+    with model_mode(model, training=False):
+        train_loss = calc_loss_loader(
+            train_loader,
+            model,
+            device,
+            eval_iter,
+        )
 
-    train_loss = calc_loss_loader(
-        train_loader,
-        model,
-        device,
-        eval_iter,
-    )
-
-    val_loss = calc_loss_loader(
-        val_loader,
-        model,
-        device,
-        eval_iter,
-    )
-
-    if was_training:
-        model.train()
+        val_loss = calc_loss_loader(
+            val_loader,
+            model,
+            device,
+            eval_iter,
+        )
 
     return train_loss, val_loss
