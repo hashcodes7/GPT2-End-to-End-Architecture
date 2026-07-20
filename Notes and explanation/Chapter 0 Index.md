@@ -46,6 +46,37 @@ Welcome to your personal learning vault! This is the central hub where we break 
 - 🧩 **[[Chapter 6 Understainding Attention Mechanism]]**
   *The grand finale. Seeing the entire Self-Attention block in action in a story format.*
 
+## ⚙️ Phase 5: Transformer Blocks & Inference Setup
+*Building the Feed-Forward Neural Network, Layer Normalization, and the final inference pipeline.*
+
+- 🧠 **[[Chapter 7.1 FFN]]**
+- ⚖️ **[[Chapter 7.2 layer normalization]]**
+- 📖 **[[Chapter 7.3 transformer story]]**
+- 🚀 **[[Chapter 7.4 Complete inference pipeline]]**
+
+## 🏋️‍♂️ Phase 6: Training the Model
+*Teaching our model to learn from data.*
+
+- 🏋️ **[[Chapter 8.1 Training GPT Model]]**
+- 📦 **[[Chapter 8.2 Batches and Epochs]]**
+- 📊 **[[Chapter 8.3 Looking at 1 Epoch data]]**
+- 📉 **[[chapter 8.4 Cross entropy loss]]**
+- 🔙 **[[Chapter 8.5 Backpropogation]]**
+- 🧮 **[[Chapter 8.6 Tensor]]**
+- 🎯 **[[Chapter 8.7 Weight Optimization]]**
+
+## 💾 Phase 7: Pretrained Weights & Text Generation
+*Using pre-existing intelligence and generating text.*
+
+- 💾 **[[Chapter 9.1 Saving our model weights in Pytorch]]**
+- 🧠 **[[Chapter 9.2 Loading OpenAI's Weights (pretrained)]]**
+- 📝 **[[Chapter 10 Text Generation]]**
+
+## 🎓 Phase 8: Instruction Fine-Tuning
+*Teaching the model to follow commands and chat.*
+
+- 🎓 **[[Chapter 11 Instruction Fine-Tuning]]**
+
 ---
 
 > [!tip] Vault Navigation
